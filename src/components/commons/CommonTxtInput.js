@@ -7,12 +7,12 @@ import {
 import * as Style from '../../styles' 
 
 const CommonTextInput = (props)=> {
-const {placeholder} = props
+const {placeholder,txtStyle} = props
     return(
        
-        <View style={styles.container}>
+        <View style={[styles.container,txtStyle]}>
     
-  <TextInput style={styles.txtInput,Style.Typography.FONT_REGULAR} placeholder={placeholder}/>
+        <TextInput style={styles.txtInput,Style.Typography.FONT_REGULAR} placeholder={placeholder}/>
         </View>
         
     );
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
         paddingRight:Style.Spacing.SCALE_8,
         borderWidth:1,
         borderColor :Style.Colors.TXT_BORDER_COLOR,
-        marginLeft:Style.Spacing.SCALE_18,
-        marginRight:Style.Spacing.SCALE_18,
+        marginLeft:Style.Spacing.SCALE_30,
+        marginRight:Style.Spacing.SCALE_30,
         justifyContent:'center',
         borderRadius:Style.Spacing.SCALE_3
     },

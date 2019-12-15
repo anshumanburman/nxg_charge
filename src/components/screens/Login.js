@@ -3,11 +3,14 @@ import {
     View,
     StyleSheet,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
 import * as Style from '../../styles';
 import {SafeAreaView} from 'react-navigation';
 import CommonTextInput from '../commons/CommonTxtInput';
+import CarLogo from '../commons/CarImage';
+import LoginForm from '../module/LoginForm';
 
 const Login = ()=> {
     return (
@@ -21,7 +24,10 @@ const Login = ()=> {
                         <Text style={styles.unselected}>Sign Up</Text>
                     </TouchableOpacity>
                 </View>
-                <CommonTextInput placeholder={"Mobile No."} />
+                <View style={styles.carImg}><CarLogo /></View>
+                <View style={styles.form}>
+                    <LoginForm />
+                </View>
             </View>
         </SafeAreaView>
     )
@@ -53,6 +59,15 @@ const styles = StyleSheet.create({
         fontFamily:Style.Typography.FONT_FAMILY_REGULAR,
         fontWeight:Style.Typography.FONT_WEIGHT_REGULAR,
         
+    },
+    carImg : {
+       // marginLeft:Style.Mixins.scaleSize(30),
+        marginTop:Style.Mixins.scaleSize(50),
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    form : {
+marginTop:Style.Mixins.scaleSize(85)
     }
 })
 
