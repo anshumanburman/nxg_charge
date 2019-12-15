@@ -11,7 +11,7 @@ const Splash = (props)=> {
         // Update the document title using the browser API
        // document.title = `You clicked ${count} times`;
        setTimeout(() => {
-           props.navigation.navigate('lgn');
+           props.navigation.navigate('login');
        }, 5000);
       });
     return (
