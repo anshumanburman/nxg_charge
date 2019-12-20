@@ -21,7 +21,7 @@ const CommonHeader = (props) => {
 
 
 
-                    <Image style={{ resizeMode: 'center', height: 20, width: 20, marginLeft: 30 }} source={require('../../../assets/images/back.png')} />
+                    <Image style={{ resizeMode: 'center', height: 20, width: 20, marginLeft: 15, }} source={require('../../../assets/images/back.png')} />
 
                 </TouchableOpacity>
                 <Text style={[styles.title, Style.Typography.FONT_MEDIUM]}>{headerTitle}</Text>

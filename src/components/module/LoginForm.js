@@ -16,7 +16,7 @@ const LoginForm = (props) => {
         <>
             <CommonTextInput placeholder={"Mobile No."} />
             <CommonTextInput placeholder={"Password"} txtStyle={styles.password} />
-            <Text style={styles.forget} onPress={() => props.navigation.navigate(Style.Constants.KEY_ADD_EV)}>Forgot Password</Text>
+            <Text style={styles.forget} onPress={() => props.navigation.navigate(Style.Constants.KEY_FILTER)}>Forgot Password</Text>
             <View style={styles.btnBg}>
                 <Text style={styles.skip}>Skip</Text>
                 <CustomButton btnStyle={styles.signIn}
