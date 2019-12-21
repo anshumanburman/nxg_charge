@@ -6,6 +6,46 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 
+1
+import { RadioGroup } from 'react-native-btr';
+
+
+const data = [
+    {
+        label: 'Ac-001(3 Pin Socket)',
+        value: 'Apple',
+        checked: true,
+
+        color: 'green',
+        disabled: false,
+        flexDirection: 'row',
+
+
+    },
+
+    {
+        label: 'DC-GB/T',
+        value: 'Mango',
+        checked: false,
+        color: 'red',
+        disabled: false,
+        flexDirection: 'row',
+
+
+    },
+
+    {
+        label: 'Type-2AC',
+        value: 'Banana',
+        checked: false,
+        color: 'red',
+        disabled: false,
+        flexDirection: 'row',
+
+
+    }
+
+]
 
 
 
@@ -13,10 +53,11 @@ const Filter = () => {
 
     const [isSelected, setIsSalected] = useState(false);
 
+    const [radioButtons, setRadioButtons] = useState(data);
 
-    // onClick={() => setIsCheked(!isChecked)
 
-    // }
+
+
 
     const rows = [
         { id: 0, text: 'Commercial', isTrue: true },
@@ -44,6 +85,26 @@ const Filter = () => {
         )
     }
 
+
+
+    // const rows1 = [
+    //     { id: 0, text: 'Hotel' },
+    //     { id: 1, text: 'Shoping Mall' },
+    //     { id: 2, text: 'Office' },
+    //     { id: 3, text: 'Multiplex' },
+    //     { id: 4, text: 'Cafeteria' }
+    // ]
+
+    // const extractKey = ({id}) =>id
+
+
+
+
+
+
+
+
+
     return (
 
         <>
@@ -65,6 +126,29 @@ const Filter = () => {
                     />
                     <Text style={{ fontWeight: "bold", fontSize: 18, marginTop: 25 }}>Connector Type</Text>
 
+                    <View style={styles.MainContainer}>
+
+
+
+                        <RadioGroup
+                            color="green" // to change disable color go to library => radio button => border color => applie condition  {borderColor: props.checked ? props.color : '#dce1dc'}//
+
+                            labelStyle={{ fontSize: 14, fontWeight: "bold", color: 'black' }}
+                            radioButtons={radioButtons}
+                            onPress={radioButtons => setRadioButtons(radioButtons)}
+
+                        //style={{ paddingTop: 16, }}
+                        />
+                    </View>
+
+                    <Text style={{ fontWeight: "bold", fontSize: 18, marginTop: 25 }}>Amenities</Text>
+
+
+
+
+
+
+
 
                 </View>
 
@@ -81,6 +165,7 @@ const Filter = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+
     },
     row: {
 
@@ -92,6 +177,15 @@ const styles = StyleSheet.create({
 
         // marginBottom: 5,
         // backgroundColor: 'skyblue',
+
+    },
+    MainContainer: {
+        flex: 1,
+        marginTop: 15
+        // backgroundColor: '#FFF8E1',
+        // justifyContent: 'left',
+        // alignItems: 'center',
+        // paddingTop: (Platform.OS) === 'ios' ? 20 : 0,
 
     },
 })
