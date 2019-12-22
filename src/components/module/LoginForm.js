@@ -43,16 +43,16 @@ let mobileRef = useRef(null);
 
 
   const loginBtn = () => {
-    // if(Validation.IsMobileNumber(mobileRef)==false){return}
-    // dispatch(loginAction({
-    //     "mobile_number": mobileInput,
-    //     "password": passwordInput,
-    //     "user_type": "driver",
-    //     "device_id": "7E0049D5-5C02-4B97-989D-CFC0F8D26652",
-    //     "device_token": "eo-7WkSfxm0:APA91bFQT3CXCyYlsax73DW_HLjuZ4UZVs_twUNhtHINPQUOZq6n2GxMynUD8CIFHwYQDHq1s4_DX7z99q_212ibBH8azXBQD0yRF0GZHFHNXZsHf49Up4EyKtblv8yHgLNuxLc0mL04",
-    //     "device_type": Platform.OS==='ios'?"ios":"android"
-    // }));
-    props.navigation.navigate(Style.Constants.KEY_HOME)
+    if(Validation.IsMobileNumber(mobileRef)==false){return}
+    dispatch(loginAction({
+        "mobile_number": mobileInput,
+        "password": passwordInput,
+        "user_type": "driver",
+        "device_id": "7E0049D5-5C02-4B97-989D-CFC0F8D26652",
+        "device_token": "eo-7WkSfxm0:APA91bFQT3CXCyYlsax73DW_HLjuZ4UZVs_twUNhtHINPQUOZq6n2GxMynUD8CIFHwYQDHq1s4_DX7z99q_212ibBH8azXBQD0yRF0GZHFHNXZsHf49Up4EyKtblv8yHgLNuxLc0mL04",
+        "device_type": Platform.OS==='ios'?"ios":"android"
+    }));
+   // props.navigation.navigate(Style.Constants.KEY_HOME)
   }
 
 
