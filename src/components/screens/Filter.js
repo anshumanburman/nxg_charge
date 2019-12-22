@@ -47,6 +47,44 @@ const data = [
 ]
 
 
+const data = [
+    {
+        label: 'Ac-001(3 Pin Socket)',
+        value: 'Apple',
+        checked: true,
+
+        color: 'green',
+        disabled: false,
+        flexDirection: 'row',
+
+
+    },
+
+    {
+        label: 'DC-GB/T',
+        value: 'Mango',
+        checked: false,
+        color: 'red',
+        disabled: false,
+        flexDirection: 'row',
+
+
+    },
+
+    {
+        label: 'Type-2AC',
+        value: 'Banana',
+        checked: false,
+        color: 'red',
+        disabled: false,
+        flexDirection: 'row',
+
+
+    }
+
+]
+
+
 const Filter = ({navigation}) => {
 
     const [isSelected, setIsSalected] = useState(false);
