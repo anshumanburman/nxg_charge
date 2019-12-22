@@ -8,12 +8,12 @@ import {
 import * as Style from '../../styles'
 
 const CustomButton = (props) => {
-    const { placeholder, btnStyle, btnTitle } = props
+    const { placeholder, btnStyle, btnTitle, onPress } = props
     return (
 
 
 
-        <TouchableOpacity style={[styles.btn, btnStyle, Style.Mixins.boxShadow('black')]}>
+        <TouchableOpacity style={[styles.btn, btnStyle, Style.Mixins.boxShadow('black')]} onPress={onPress}>
             <Text style={[styles.text, Style.Typography.FONT_REGULAR]}>{btnTitle}</Text>
         </TouchableOpacity>
 

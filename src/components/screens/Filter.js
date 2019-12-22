@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import CommonHeader from '../commons/CommonHeader';
-import { ScrollView, Text, View, FlatList, StyleSheet, Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-//import CommonRadioButton from '../commons/CommonRadioButton';
+import { ScrollView, Text, View, FlatList, StyleSheet, Image,TouchableOpacity } from 'react-native';
+import {SafeAreaView} from 'react-navigation';
 
 
 
 
 
-
-const Filter = () => {
+const Filter = ({navigation}) => {
 
     const [isSelected, setIsSalected] = useState(false);
 
@@ -24,11 +22,12 @@ const Filter = () => {
         { id: 2, text: 'Public', isTrue: false },
 
     ]
-    const extractKey = ({ id }) => id
+    const extractKey = ({ id }) => id.toString()
 
 
     const renderItem = (item) => {
         return (
+            
             <View style={{ height: 40, flexDirection: 'row', marginTop: 15, marginLeft: 10, borderRadius: 25, backgroundColor: "#dce1dc", justifyContent: "center" }}>
                 {item.isTrue && <TouchableOpacity style={{ height: 25, width: 25, marginLeft: 7, backgroundColor: "green", borderRadius: 12, justifyContent: "center", marginTop: 8, opacity: 1 }}>
                     <Image style={{ height: 12, width: 12, marginLeft: 5, }} source={require('../../../assets/images/close.png')} />
@@ -47,7 +46,8 @@ const Filter = () => {
     return (
 
         <>
-            <CommonHeader headerTitle={"Filter"} />
+        <SafeAreaView style={{flex:1}}>
+            <CommonHeader headerTitle={"Filter"} navigation={navigation}/>
             <ScrollView style={{ marginTop: 15 }}>
 
 
@@ -72,7 +72,7 @@ const Filter = () => {
 
             </ScrollView>
 
-
+            </SafeAreaView>
         </>
 
     );

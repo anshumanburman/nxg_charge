@@ -21,7 +21,7 @@ const Login = (props) => {
         setIsSignIn(bool)
     }
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: 'blue' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
             <View style={styles.container}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Style.Spacing.SCALE_52 }}>
                     <TouchableOpacity style={styles.signIn} onPress={() => isSelectedSignIn(true)}>
