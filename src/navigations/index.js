@@ -3,12 +3,13 @@ import AuthNavigator from './authNavigator';
 import AppNavigator from './appNavigator';
 import Splash from '../components/screens/Splash';
 import * as Constants from '../res/constants';
+import DrawerNavigator from './drawerNavigator';
 
 
 const RootNavigator = createSwitchNavigator({
     [Constants.KEY_SPLASH]:Splash,
     [Constants.KEY_AUTH] :AuthNavigator,
-    //App: AppNavigator
+    [Constants.KEY_DRAWER]: DrawerNavigator
 },{
     initialRouteName: Constants.KEY_SPLASH,
   })

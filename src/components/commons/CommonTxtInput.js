@@ -7,12 +7,21 @@ import {
 import * as Style from '../../styles'
 
 const CommonTextInput = (props) => {
-    const { placeholder, txtStyle, multiLine } = props
+    const { placeholder, txtStyle, multiLine,onChangeText, refValue,keyboardType, value,onSubmitEditing } = props
     return (
 
         <View style={[styles.container, txtStyle]}>
 
-            <TextInput style={[styles.txtInput, Style.Typography.FONT_REGULAR, { textAlignVertical: 'top' }]} placeholder={placeholder} multiline={multiLine} />
+            <TextInput 
+            style={[styles.txtInput, Style.Typography.FONT_REGULAR, { textAlignVertical: 'top' }]} 
+            placeholder={placeholder} 
+            multiline={multiLine} 
+            onChangeText={onChangeText}
+            ref ={refValue}
+            keyboardType={keyboardType}
+            value={value}
+            onSubmitEditing={onSubmitEditing}
+            />
         </View>
 
     );

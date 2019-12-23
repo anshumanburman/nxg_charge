@@ -12,29 +12,27 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 import 'react-native-gesture-handler';
 import { enableScreens } from 'react-native-screens';
-
-
 import Navigator from './src/navigations';
+import configureStore from './src/ConfigureStore';
+import {Provider} from 'react-redux';
+
+
+
 
 
 enableScreens();
 
 
-
+const store = configureStore();
 const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
+      <Provider store={store}>
       <Navigator />
+      </Provider>
     </>
 
   )
