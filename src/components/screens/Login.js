@@ -5,7 +5,9 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
-    Image
+    Image,
+    KeyboardAvoidingView,
+    ScrollView
 } from 'react-native';
 import * as Style from '../../styles';
 import { SafeAreaView } from 'react-navigation';
@@ -22,7 +24,9 @@ const Login = (props) => {
     }
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-            <View style={styles.container}>
+            <ScrollView contentContainerStyle={{flex:1}} keyboardShouldPersistTaps={'always'}>
+            <KeyboardAvoidingView style={{flex:1}} behavior="position">
+            
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Style.Spacing.SCALE_52 }}>
                     <TouchableOpacity style={styles.signIn} onPress={() => isSelectedSignIn(true)}>
                         <Text style={isSignIn ? styles.selected : styles.unselected}>Sign In</Text>
@@ -36,7 +40,8 @@ const Login = (props) => {
                 <View style={styles.form}>
                     {isSignIn ? <LoginForm navigation={props.navigation} /> : <SignUpForm />}
                 </View>
-            </View>
+                </KeyboardAvoidingView>
+            </ScrollView>
         </SafeAreaView>
     )
 }

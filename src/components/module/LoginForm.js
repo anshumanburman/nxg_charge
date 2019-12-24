@@ -20,7 +20,8 @@ import * as Validation from '../../res/validations';
 const LoginForm = (props) => {
     const [mobileInput, setMobileInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
-let mobileRef = useRef(null);
+    let mobileRef = useRef(null);
+    let passwordRef = useRef(null);
 
     const { loginRes, fetching, error } = useSelector(state => ({
         loginRes: state.loginReducer.data,
@@ -34,26 +35,26 @@ let mobileRef = useRef(null);
         // console.log("mobileRef ::::::: ",mobileRef );
         // console.log("mobileRef value ::::::: ",mobileRef.props.value );
         // alert("res ::: ",loginRes)
-        if (loginRes!= undefined && loginRes.status === 108){
-                  alert(loginRes.message);
-             }else if (loginRes!= undefined && loginRes.status === 200 || loginRes!= undefined && loginRes.status===312){
-                props.navigation.navigate(Style.Constants.KEY_HOME)
-             }
+        if (loginRes != undefined && loginRes.status === 108) {
+            alert(loginRes.message);
+        } else if (loginRes != undefined && loginRes.status === 200 || loginRes != undefined && loginRes.status === 312) {
+            props.navigation.navigate(Style.Constants.KEY_HOME)
+        }
     });
 
 
-  const loginBtn = () => {
-    if(Validation.IsMobileNumber(mobileRef)==false){return}
-    dispatch(loginAction({
-        "mobile_number": mobileInput,
-        "password": passwordInput,
-        "user_type": "driver",
-        "device_id": "7E0049D5-5C02-4B97-989D-CFC0F8D26652",
-        "device_token": "eo-7WkSfxm0:APA91bFQT3CXCyYlsax73DW_HLjuZ4UZVs_twUNhtHINPQUOZq6n2GxMynUD8CIFHwYQDHq1s4_DX7z99q_212ibBH8azXBQD0yRF0GZHFHNXZsHf49Up4EyKtblv8yHgLNuxLc0mL04",
-        "device_type": Platform.OS==='ios'?"ios":"android"
-    }));
-   // props.navigation.navigate(Style.Constants.KEY_HOME)
-  }
+    const loginBtn = () => {
+        if (Validation.IsMobileNumber(mobileRef) == false) { return }
+        dispatch(loginAction({
+            "mobile_number": mobileInput,
+            "password": passwordInput,
+            "user_type": "driver",
+            "device_id": "7E0049D5-5C02-4B97-989D-CFC0F8D26652",
+            "device_token": "eo-7WkSfxm0:APA91bFQT3CXCyYlsax73DW_HLjuZ4UZVs_twUNhtHINPQUOZq6n2GxMynUD8CIFHwYQDHq1s4_DX7z99q_212ibBH8azXBQD0yRF0GZHFHNXZsHf49Up4EyKtblv8yHgLNuxLc0mL04",
+            "device_type": Platform.OS === 'ios' ? "ios" : "android"
+        }));
+        // props.navigation.navigate(Style.Constants.KEY_HOME)
+    }
 
 
     //loginRes.fetching ? 
@@ -69,9 +70,9 @@ let mobileRef = useRef(null);
     // else 
     return (
         <>
-        
-            <CommonTextInput placeholder={"Mobile No."} onChangeText={(text)=>setMobileInput(text)} value={mobileInput} refValue={ref => mobileRef = ref} keyboardType={Style.Constants.KB_TYPE_PHONE}/>
-            <CommonTextInput placeholder={"Password"} txtStyle={styles.password} onChangeText={(text)=>setPasswordInput(text)} keyboardType={Style.Constants.KB_TYPE_DEFAULT} onSubmitEditing={()=>loginBtn()}/>
+
+            <CommonTextInput placeholder={"Mobile No."} onChangeText={(text) => text.length <= 10 ? setMobileInput(text) : passwordRef.focus()} value={mobileInput} refValue={ref => mobileRef = ref} keyboardType={Style.Constants.KB_TYPE_PHONE} onSubmitEditing={() => passwordRef.focus()} />
+            <CommonTextInput placeholder={"Password"} txtStyle={styles.password} onChangeText={(text) => setPasswordInput(text)} refValue={ref => passwordRef = ref} keyboardType={Style.Constants.KB_TYPE_DEFAULT} onSubmitEditing={() => loginBtn()} />
             <Text style={styles.forget} onPress={() => props.navigation.navigate(Style.Constants.KEY_FILTER)}>Forgot Password</Text>
             <View style={styles.btnBg}>
                 <Text style={styles.skip}>Skip</Text>
@@ -84,7 +85,7 @@ let mobileRef = useRef(null);
             </View>
             <CustomLoader loading={fetching} />
             {/* {loginRes!= undefined && loginRes.status === 108 ? alert(loginRes.message):null} */}
-            
+
         </>
     )
 }
@@ -99,8 +100,8 @@ const styles = StyleSheet.create({
         fontSize: Style.Typography.FONT_SIZE_14,
         color: Style.Colors.GREY_COLOR,
         marginTop: Style.Mixins.scaleSize(15),
-        alignSelf:'flex-end'
-        
+        alignSelf: 'flex-end'
+
     },
     btnBg: {
         // backgroundColor:'yellow',

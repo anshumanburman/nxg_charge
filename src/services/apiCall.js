@@ -24,17 +24,21 @@ async function getApiCall(url) {
 async function getPostApiCall(method) {
     console.log('url :::: ', method.type);
     console.log('url payload:::: ', method.payload);
+    let formData = new FormData();
     try {
-        // for (const [key, value] of Object.entries(method.payload)) {
-        //     console.log(key, value);
-        //   }
+        for (const [key, value] of Object.entries(method.payload)) {
+            console.log(key, value);
+            formData.append(`${key}`,value);
+          }
+          console.log("formData :: ",formData);
    let response = await fetch(method.type,{
     method: 'POST',
     headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        //'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data'
     },
-    body : JSON.stringify(method.payload)
+    body : formData//JSON.stringify(method.payload)
    })
    let responseJson = await response.json();
    return responseJson;

@@ -1,21 +1,15 @@
 import * as Types from '../actions/Types';
 
-const initialState = {
-    fetching : false,
-    data : null,
-    error :null
-    
-}
 
-export default function loginReducer(state = {}, action) {
-    console.log("action ::: ",action.type  + ":::: ",action.payload);
+export default function signUpReducer(state = {}, action) {
+    //console.log("action ::: ",action.type  + ":::: ",action.payload);
     
     switch (action.type) {
-        case Types.LOGIN_METHOD:
+        case Types.SIGN_UP_METHOD:
         return {...state, fetching : true, error : null};
-        case Types.API_CALL_SUCCESS :
+        case Types.SIGN_UP_SUCCESS :
         return {...state, fetching: false, data: action.payload};
-        case Types.API_CALL_FAILURE:
+        case Types.SIGN_UP_FAILURE:
         return {...state, fetching : false, data:null, error: action.error};
         default:
         return state;
