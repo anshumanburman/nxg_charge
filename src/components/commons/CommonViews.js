@@ -75,9 +75,14 @@ export const ChargingStationDetailListView = (props) => {
                 <View style={{ padding: 15, flex: 1 }}>
                 <Text style={{ ...Utils.Typography.FONT_BOLD, fontSize: 18 }}>DC-Moderate</Text>
                     
-                    <Text style={{ ...Utils.Typography.FONT_FAMILY_REGULAR, fontSize: 14, color: Utils.Colors.GREY_COLOR, marginTop: 5 }}>15kW</Text>
-                    <Text style={{ ...Utils.Typography.FONT_BOLD, fontSize: 14, marginTop: 10 }}>10$/Unit</Text>
-                    
+                    <Text style={{ ...Utils.Typography.FONT_FAMILY_REGULAR, fontSize: 16, color: Utils.Colors.GREY_COLOR, marginTop: 5 }}>15kW</Text>
+                    <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
+                    <Text style={{ ...Utils.Typography.FONT_REGULAR, fontSize: 16,color: Utils.Colors.GREY_COLOR, marginTop: 10 }}>Port type: CSS</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center',...Utils.Mixins.boxShadow('black') }}>
+                            <Image source={require('../../../assets/images/verified.png')} style={{ resizeMode: 'center', backgroundColor: 'green', height: 24, width: 24, borderRadius: 12 }} />
+                            <Text style={{ ...Utils.Typography.FONT_BOLD, fontSize: 16, color: Utils.Colors.GREEN_COLOR, marginLeft: 5 }}>Available</Text>
+                        </View>
+                    </View>
                 </View>
             </View>
         </TouchableOpacity>
