@@ -6,7 +6,7 @@ import * as Style from '../../styles';
 
 
 const CommonHeader = (props) => {
-    const { headerTitle,onPress } = props;
+    const { headerTitle,onPress,tintColor } = props;
 
     return (
         <>
@@ -16,10 +16,10 @@ const CommonHeader = (props) => {
 
 
 
-                    <Image style={{ resizeMode: 'center', height: 20, width: 20, marginLeft: 15, }} source={require('../../../assets/images/back.png')} />
+                    <Image style={{ resizeMode: 'center', height: 20, width: 20, marginLeft: 15,tintColor }} source={require('../../../assets/images/back.png')} />
 
                 </TouchableOpacity>
-                <Text style={styles.title}>{headerTitle}</Text>
+                <Text style={{...styles.title,color:tintColor}}>{headerTitle}</Text>
 
             </View>
 

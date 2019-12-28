@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View,StyleSheet,FlatList } from 'react-native';
+import { View,StyleSheet,FlatList,ImageBackground } from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import CommonHeader from '../commons/CommonHeader';
-import {ChargingStationView} from '../commons/CommonViews';
+import {ChargingStationView,ChargingStationDetailView,ChargingStationDetailListView} from '../commons/CommonViews';
 import * as Utils from '../../styles';
 
 const list = [
@@ -14,16 +14,22 @@ const list = [
     {title: "Phoenix Marketcity",address : "Pirojsha nagar, vikhroli East, Mumbai",distance: "20Km"},
 ]
 
-const ChargingStation = ({navigation})=> {
+const ChargingStationDetails = ({navigation})=> {
 const [chargingList, setChargingList] = useState(list);
 
     const renderDrawerItems = (item, index)=> {
-    return <ChargingStationView onPress={()=>navigation.navigate(Utils.Constants.KEY_CHARGING_STATION_DETAILS)}/>
+    return <ChargingStationDetailListView />
     }
     return(
         <SafeAreaView style={{flex:1}}>
             <View style={styles.container}>
-         <CommonHeader headerTitle={'Charging Stations'} onPress={()=>navigation.goBack()}/>
+                <ImageBackground style={{height:300}} source={require('../../../assets/images/super_charge.png')}>
+         <CommonHeader headerTitle={'Vikhroli East'} onPress={()=>navigation.goBack()} tintColor={'white'}/>
+         
+         </ImageBackground>
+         <View style={{marginTop:-80}}>
+         <ChargingStationDetailView />
+         </View>
          <FlatList
                     data={chargingList}
                     renderItem={({ item, index }) => renderDrawerItems(item, index)}
@@ -43,4 +49,8 @@ const [chargingList, setChargingList] = useState(list);
  })
 
 
-export default ChargingStation;
+export default ChargingStationDetails;
+
+
+
+//export default ChargingStationDetails;
