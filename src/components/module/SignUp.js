@@ -45,7 +45,7 @@ const SignUpForm = (props) => {
         if (respose!= undefined && respose.status >= 100 && respose!= undefined && respose.status < 200){
                   alert(respose.message);
              }else if (respose!= undefined && respose.status === 200 || respose!= undefined && respose.status===312){
-                props.navigation.navigate(Style.Constants.KEY_HOME)
+                props.navigation.navigate(Style.Constants.KEY_APP)
              }
     },[respose]);
 const signUpBtn = ()=>{

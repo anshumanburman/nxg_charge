@@ -16,12 +16,18 @@ import CarLogo from '../commons/CarImage';
 import LoginForm from '../module/LoginForm';
 import SignUpForm from '../module/SignUp';
 
-const Login = (props) => {
+const Login = ({navigation}) => {
     const [isSignIn, setIsSignIn] = useState(true);
 
     const isSelectedSignIn = (bool) => {
         setIsSignIn(bool)
     }
+    useEffect(()=>{
+        console.log("navigation back in login", navigation.state );
+        if (navigation.state.params) {
+            setIsSignIn(navigation.state.params.isSignin)
+        }
+    },[])
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
             <ScrollView contentContainerStyle={{flex:1}} keyboardShouldPersistTaps={'always'}>
@@ -38,7 +44,7 @@ const Login = (props) => {
                 </View>
                 <View style={styles.carImg}><CarLogo /></View>
                 <View style={styles.form}>
-                    {isSignIn ? <LoginForm navigation={props.navigation} /> : <SignUpForm navigation={props.navigation}/>}
+                    {isSignIn ? <LoginForm navigation={navigation} /> : <SignUpForm navigation={navigation}/>}
                 </View>
                 </KeyboardAvoidingView>
             </ScrollView>

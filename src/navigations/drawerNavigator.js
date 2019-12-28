@@ -2,6 +2,7 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 import * as Style from '../styles';
 import Home from '../components/screens/Home';
 import CustomDrawer from '../components/screens/CustomDrawer';
+import ChargingStation from '../components/screens/ChargingStation';
 
 
 
@@ -9,7 +10,8 @@ import CustomDrawer from '../components/screens/CustomDrawer';
 
 
 const DrawerNavigator = createDrawerNavigator({
-    [Style.Constants.KEY_HOME]: Home
+    [Style.Constants.KEY_HOME]: Home,
+    [Style.Constants.KEY_CHARGING_STATIONS]: ChargingStation,
 }, {
     initialRouteName: Style.Constants.KEY_HOME,
     contentComponent: CustomDrawer

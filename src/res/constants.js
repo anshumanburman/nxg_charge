@@ -7,10 +7,12 @@ export const KEY_ADD_EV = 'add_ev';
 export const KEY_FILTER = 'filter';
 export const KEY_HOME = 'home';
 export const KEY_DRAWER = 'drawer';
+export const KEY_CHARGING_STATIONS = 'charging_stations';
 
 export const KEY_VIKHROLI_EAST = "vikhroli_east";
 
 export const KEY_AUTH = "auth";
+export const KEY_APP = "app";
 
 
 
