@@ -35,12 +35,12 @@ const LoginForm = (props) => {
         // console.log("mobileRef ::::::: ",mobileRef );
         // console.log("mobileRef value ::::::: ",mobileRef.props.value );
         // alert("res ::: ",loginRes)
-        if (loginRes != undefined && loginRes.status === 108) {
+        if (loginRes != undefined && loginRes.status === 108 || loginRes != undefined && loginRes.status === 319) {
             alert(loginRes.message);
         } else if (loginRes != undefined && loginRes.status === 200 || loginRes != undefined && loginRes.status === 312) {
             props.navigation.navigate(Style.Constants.KEY_HOME)
         }
-    });
+    },[loginRes]);
 
 
     const loginBtn = () => {

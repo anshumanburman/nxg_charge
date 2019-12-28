@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CommonHeader from '../commons/CommonHeader';
 import { ScrollView, Text, View, FlatList, StyleSheet, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import {SafeAreaView} from 'react-navigation'
 import CustomButton from '../commons/CustomButton';
 //import CommonRadioButton from '../commons/CommonRadioButton';
 
@@ -90,7 +91,7 @@ const a = [
 
 
 
-const Filter = () => {
+const Filter = ({navigation}) => {
 
     const [isSelected, setIsSalected] = useState(false);
 
@@ -172,8 +173,9 @@ const Filter = () => {
 
     return (
 
-        <>
-            <CommonHeader headerTitle={"Filter"} />
+        <SafeAreaView>
+
+            <CommonHeader headerTitle={"Filter"} navigation={navigation}/>
             <ScrollView contentContainerStyle={{ paddingVertical: 30 }}>
 
 
@@ -252,7 +254,7 @@ const Filter = () => {
             </ScrollView>
 
 
-        </>
+        </SafeAreaView>
 
     );
 }

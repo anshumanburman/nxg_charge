@@ -4,14 +4,14 @@ import {
     StyleSheet,
     Text
 } from 'react-native';
-
+import * as Style from '../../styles';
 
 const Splash = (props)=> {
     useEffect(() => {
         // Update the document title using the browser API
        // document.title = `You clicked ${count} times`;
        setTimeout(() => {
-           props.navigation.navigate('login');
+           props.navigation.navigate(Style.Constants.KEY_AUTH);
        }, 5000);
       });
     return (

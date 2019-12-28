@@ -16,26 +16,18 @@ const CustomDrawer = ({navigation}) => {
 
 const [sideBarItem,setSideBarItem]=useState(itemList);
 const navigatetoScreen = (route) => {
-    console.warn('pressed cell',route);
+    console.warn('pressed cell', route);
     //navigation.closeDrawer();
-    if (route === Utils.Constants.KEY_LOGIN) {
-        const backAction = NavigationActions.back({
-            key: route,
-            params:{}
-          });
-          navigation.dispatch(backAction);
-    } else {
-        const navigateAction = NavigationActions.navigate({
-            routeName : route,
-            params
-        });
-        navigation.dispatch(navigateAction)
-    }
-    
+    const navigateAction = NavigationActions.back({
+        routeName: route,
+        params: {}
+    });
+    //navigation.dispatch(navigateAction)
+    navigation.navigate('login');
     //console.warn(' navigateAction',navigateAction);
-    
-    
-    
+
+
+
 }
 const renderDrawerItems = (item, index)=> {
     return(

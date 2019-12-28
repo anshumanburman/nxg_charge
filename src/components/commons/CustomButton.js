@@ -3,18 +3,18 @@ import {
     View,
     TouchableOpacity,
     StyleSheet,
-    Text
+    Text,Image
 } from 'react-native';
 import * as Style from '../../styles'
 
 const CustomButton = (props) => {
-    const { placeholder, btnStyle, btnTitle, onPress } = props
+    const { placeholder, btnStyle, btnTitle, onPress,image } = props
     return (
 
 
 
         <TouchableOpacity style={[styles.btn, btnStyle, Style.Mixins.boxShadow('black')]} onPress={onPress}>
-            <Text style={[styles.text, Style.Typography.FONT_REGULAR]}>{btnTitle}</Text>
+           {image ? <Image source={image} style={{resizeMode:'center'}}/>: <Text style={[styles.text, Style.Typography.FONT_REGULAR]}>{btnTitle}</Text>}
         </TouchableOpacity>
 
 

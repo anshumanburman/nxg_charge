@@ -17,7 +17,7 @@ import * as Validation from '../../res/validations';
 
 
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
     const [isChecked, setIsCheked] = useState(false)
     const [nameInput, setNameInput] = useState('');
     const [emailInput, setEmailInput] = useState('');
@@ -42,12 +42,12 @@ const SignUpForm = () => {
         // console.log("mobileRef ::::::: ",mobileRef );
         // console.log("mobileRef value ::::::: ",mobileRef.props.value );
         // alert("res ::: ",loginRes)
-        // if (loginRes!= undefined && loginRes.status === 108){
-        //           alert(loginRes.message);
-        //      }else if (loginRes!= undefined && loginRes.status === 200 || loginRes!= undefined && loginRes.status===312){
-        //         props.navigation.navigate(Style.Constants.KEY_HOME)
-        //      }
-    });
+        if (respose!= undefined && respose.status >= 100 && respose!= undefined && respose.status < 200){
+                  alert(respose.message);
+             }else if (respose!= undefined && respose.status === 200 || respose!= undefined && respose.status===312){
+                props.navigation.navigate(Style.Constants.KEY_HOME)
+             }
+    },[respose]);
 const signUpBtn = ()=>{
     if (Validation.isValidRegister(nameRef,emailRef,mobileRef,passwordRef,coonfirmPasswordRef) == false) { return }
     dispatch(signUpAction({

@@ -21,6 +21,7 @@ const CommonTextInput = (props) => {
             keyboardType={keyboardType}
             value={value}
             onSubmitEditing={onSubmitEditing}
+            autoCapitalize={'none'}
             />
         </View>
 

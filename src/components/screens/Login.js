@@ -38,7 +38,7 @@ const Login = (props) => {
                 </View>
                 <View style={styles.carImg}><CarLogo /></View>
                 <View style={styles.form}>
-                    {isSignIn ? <LoginForm navigation={props.navigation} /> : <SignUpForm />}
+                    {isSignIn ? <LoginForm navigation={props.navigation} /> : <SignUpForm navigation={props.navigation}/>}
                 </View>
                 </KeyboardAvoidingView>
             </ScrollView>
