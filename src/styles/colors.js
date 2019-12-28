@@ -14,3 +14,6 @@ export const TXT_BORDER_COLOR = '#efefef';
 export const SIGN_COLOR = '#2a2d2a';
 export const GREY_COLOR = '#70746f';
 export const GREEN_COLOR = '#326933';
+export const RED_COLOR = '#fe0e0e';
+export const LIGHT_YELLOW_COLOR = '#e8aa19';
+export const LIGHT_GREY_COLOR = '#dce1dc';

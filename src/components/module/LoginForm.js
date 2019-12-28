@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import {
     View,
     StyleSheet,
@@ -31,19 +31,22 @@ const LoginForm = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // console.log("login res :::: ", loginRes, + "::::: ",fetching  + "::::::: ",error );
+         console.log("login res :::: ", loginRes, + "::::: ",fetching  + "::::::: ",error );
+         console.log("navigation back", props.navigation.state );
         // console.log("mobileRef ::::::: ",mobileRef );
         // console.log("mobileRef value ::::::: ",mobileRef.props.value );
         // alert("res ::: ",loginRes)
         if (loginRes != undefined && loginRes.status === 108 || loginRes != undefined && loginRes.status === 319) {
             alert(loginRes.message);
         } else if (loginRes != undefined && loginRes.status === 200 || loginRes != undefined && loginRes.status === 312) {
-            props.navigation.navigate(Style.Constants.KEY_HOME)
+            props.navigation.state.params ? null : props.navigation.navigate(Style.Constants.KEY_APP)
         }
     },[loginRes]);
+    //useLayoutEffect
 
 
     const loginBtn = () => {
+       delete props.navigation.state.params
         if (Validation.IsMobileNumber(mobileRef) == false) { return }
         dispatch(loginAction({
             "mobile_number": mobileInput,

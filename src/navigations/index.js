@@ -9,7 +9,7 @@ import DrawerNavigator from './drawerNavigator';
 const RootNavigator = createSwitchNavigator({
     [Constants.KEY_SPLASH]:Splash,
     [Constants.KEY_AUTH] :AuthNavigator,
-    [Constants.KEY_DRAWER]: DrawerNavigator
+    [Constants.KEY_APP]: AppNavigator
 },{
     initialRouteName: Constants.KEY_SPLASH,
   })

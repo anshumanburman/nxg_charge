@@ -4,7 +4,7 @@ import * as Utils from '../../styles';
 import {NavigationActions} from 'react-navigation';
 
 const itemList = [
-    {label : "Find Station"},
+    {label : "Find Station", route: Utils.Constants.KEY_CHARGING_STATIONS},
     {label : "Charge Now"},
     {label : "Login", route: Utils.Constants.KEY_LOGIN},
     {label : "Sign up", route: Utils.Constants.KEY_LOGIN},
@@ -15,23 +15,47 @@ const itemList = [
 const CustomDrawer = ({navigation}) => {
 
 const [sideBarItem,setSideBarItem]=useState(itemList);
-const navigatetoScreen = (route) => {
+const navigatetoScreen = (route,index) => {
     console.warn('pressed cell', route);
-    //navigation.closeDrawer();
-    const navigateAction = NavigationActions.back({
-        routeName: route,
-        params: {}
-    });
-    //navigation.dispatch(navigateAction)
-    navigation.navigate('login');
-    //console.warn(' navigateAction',navigateAction);
-
-
-
+    navigation.closeDrawer();
+    // const navigateAction = NavigationActions.navigate({
+    //     routeName: route,
+    //     params: {isSignin:false},
+    //     action: NavigationActions.navigate({ routeName: route }),
+    //   });
+    // navigation.dispatch(navigateAction)
+let navigateAction;
+    switch (index) {
+        case 2:
+             navigateAction = NavigationActions.navigate({
+                routeName: route,
+                params: {isSignin:true},
+                action: NavigationActions.navigate({ routeName: route }),
+              });
+            //navigation.dispatch(navigateAction)
+            break;
+            case 3:
+                 navigateAction = NavigationActions.navigate({
+                    routeName: route,
+                    params: {isSignin:false},
+                    action: NavigationActions.navigate({ routeName: route }),
+                  });
+               // navigation.dispatch(navigateAction)
+                break;
+        default:
+             navigateAction = NavigationActions.navigate({
+                routeName: route,
+                //params: {isSignin:false},
+                action: NavigationActions.navigate({ routeName: route }),
+              });
+           // navigation.dispatch(navigateAction)
+            break;
+    }
+    navigation.dispatch(navigateAction)
 }
 const renderDrawerItems = (item, index)=> {
     return(
-        <TouchableOpacity style={styles.itemStyle} onPress={()=>navigatetoScreen(item.route)}>
+        <TouchableOpacity style={styles.itemStyle} onPress={()=>navigatetoScreen(item.route,index)}>
 <Text style={[Utils.Typography.FONT_REGULAR,styles.lblStyle]}>{item.label}</Text>
         </TouchableOpacity>
     )
