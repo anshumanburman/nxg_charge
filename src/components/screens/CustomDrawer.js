@@ -5,7 +5,7 @@ import {NavigationActions} from 'react-navigation';
 
 const itemList = [
     {label : "Find Station", route: Utils.Constants.KEY_CHARGING_STATIONS},
-    {label : "Charge Now"},
+    {label : "Charge Now", route: Utils.Constants.KEY_OFFERS},
     {label : "Login", route: Utils.Constants.KEY_LOGIN},
     {label : "Sign up", route: Utils.Constants.KEY_LOGIN},
     {label : "Contact Us"},
