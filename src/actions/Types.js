@@ -8,3 +8,8 @@ export const LOGIN_METHOD = BASE_URL + 'login';
 export const SIGN_UP_METHOD = BASE_URL + 'userRegister';
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 export const SIGN_UP_FAILURE = "SIGN_UP_FAILURE";
+
+//forgotPassword
+export const FORGOT_PASSWORD_METHOD = BASE_URL + 'forgotPassword';
+export const FORGOT_PASSWORD_SUCCESS = "FORGOT_PASSWORD_SUCCESS";
+export const FORGOT_PASSWORD_FAILURE = "FORGOT_PASSWORD_FAILURE";

@@ -9,6 +9,7 @@ export const KEY_HOME = 'home';
 export const KEY_DRAWER = 'drawer';
 export const KEY_CHARGING_STATIONS = 'charging_stations';
 export const KEY_CHARGING_STATION_DETAILS = 'charging_station_details';
+export const KEY_FORGOT_PASSWORD = 'forgot_password';
 
 export const KEY_OFFERS = 'offers';
 

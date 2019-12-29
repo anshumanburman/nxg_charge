@@ -5,7 +5,10 @@ API_CALL_SUCCESS,
 API_CALL_FAILURE,
 SIGN_UP_METHOD,
 SIGN_UP_SUCCESS,
-SIGN_UP_FAILURE
+SIGN_UP_FAILURE,
+FORGOT_PASSWORD_METHOD,
+FORGOT_PASSWORD_SUCCESS,
+FORGOT_PASSWORD_FAILURE
 } from '../actions/Types';
 
 import callApis from '../services/apiCall';
@@ -44,12 +47,28 @@ function* loginAction(action){
   function* watchSignUpction(){
       yield takeLatest(SIGN_UP_METHOD, signUpAction )
   }
+  //FORGOT PASSWORD
+  function* forgotPasswordAction(action){
+    console.log('action in saga signUpAction :::: ',action)
+      try {
+        const data = yield callApis(action)
+        console.log('data fetch login ::::: ',data)
+        yield put({type: FORGOT_PASSWORD_SUCCESS,payload: data})
+  
+      }catch(e){
+        yield put({type: FORGOT_PASSWORD_FAILURE})
+      }
+  }
+  function* watchforgotPasswordAction(){
+      yield takeLatest(FORGOT_PASSWORD_METHOD, forgotPasswordAction )
+  }
   
   //*************************** */
   function* dataSaga(){
       yield all([
             watchLoginAction(),
-            watchSignUpction()
+            watchSignUpction(),
+            watchforgotPasswordAction(),
       ])
   }
   
