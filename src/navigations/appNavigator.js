@@ -6,7 +6,7 @@ import ChargingStationDetails from '../components/screens/ChargingStationDetails
 
 const RouteConfig = {
     [Constant.KEY_DRAWER] : DrawerNavigator,
-    [Constant.KEY_CHARGING_STATION_DETAILS] : ChargingStationDetails,
+    //[Constant.KEY_CHARGING_STATION_DETAILS] : ChargingStationDetails,
 };
 const AuthNavigatorconfig = {
     initialRouteName: Constant.KEY_DRAWER,

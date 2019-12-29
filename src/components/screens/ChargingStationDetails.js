@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View,StyleSheet,FlatList,ImageBackground } from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import CommonHeader from '../commons/CommonHeader';
@@ -16,6 +16,11 @@ const list = [
 
 const ChargingStationDetails = ({navigation})=> {
 const [chargingList, setChargingList] = useState(list);
+useEffect(()=>{
+    console.warn("navigation details :::: ",navigation.state);
+    
+})
+
 
     const renderDrawerItems = (item, index)=> {
     return <ChargingStationDetailListView />
