@@ -15,7 +15,7 @@ import {SafeAreaView} from 'react-navigation';
 import * as Style from '../../styles';
 import CommonTextInput from '../commons/CommonTxtInput';
 import CustomButton from '../commons/CustomButton';
-import { forgotPasswordAction } from '../../actions/action';
+import { forgotPasswordAction,forgotPasswordClear } from '../../actions/action';
 import CustomLoader from '../commons/CustomLoader';
 import * as Validation from '../../res/validations';
 import CommonHeader from '../commons/CommonHeader';
@@ -49,6 +49,9 @@ const ForgotPassword = ({navigation}) => {
         if (loginRes != undefined) {
             alert(loginRes.message);
         } 
+        return ()=> {
+            dispatch(forgotPasswordClear())
+        }
     },[loginRes]);
     //useLayoutEffect
 

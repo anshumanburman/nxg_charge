@@ -15,8 +15,8 @@ async function getApiCall(url) {
         let response = await fetch(url);
         let responseJson = await response.json();
         return responseJson;
-    } catch(error) {
-      console.error(error);
+    } catch (error) {
+        console.error(error);
     }
 }
 
@@ -28,22 +28,22 @@ async function getPostApiCall(method) {
     try {
         for (const [key, value] of Object.entries(method.payload)) {
             console.log(key, value);
-            formData.append(`${key}`,value);
-          }
-          console.log("formData :: ",formData);
-   let response = await fetch(method.type,{
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        //'Content-Type': 'application/json'
-        'Content-Type': 'multipart/form-data'
-    },
-    body : formData//JSON.stringify(method.payload)
-   })
-   let responseJson = await response.json();
-   return responseJson;
-    } catch(error) {
-        console.log('error ::::',error)
+            formData.append(`${key}`, value);
+        }
+        console.log("formData :: ", formData);
+        let response = await fetch(method.type, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                //'Content-Type': 'application/json'
+                'Content-Type': 'multipart/form-data'
+            },
+            body: formData//JSON.stringify(method.payload)
+        })
+        let responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        console.log('error ::::', error)
         alert(error)
     }
 }

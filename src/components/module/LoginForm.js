@@ -75,7 +75,7 @@ const LoginForm = (props) => {
         <>
 
             <CommonTextInput placeholder={"Mobile No."} onChangeText={(text) => text.length <= 10 ? setMobileInput(text) : passwordRef.focus()} value={mobileInput} refValue={ref => mobileRef = ref} keyboardType={Style.Constants.KB_TYPE_PHONE} onSubmitEditing={() => passwordRef.focus()} />
-            <CommonTextInput placeholder={"Password"} txtStyle={styles.password} onChangeText={(text) => setPasswordInput(text)} refValue={ref => passwordRef = ref} keyboardType={Style.Constants.KB_TYPE_DEFAULT} onSubmitEditing={() => loginBtn()} />
+            <CommonTextInput placeholder={"Password"} txtStyle={styles.password} onChangeText={(text) => setPasswordInput(text)} refValue={ref => passwordRef = ref} keyboardType={Style.Constants.KB_TYPE_DEFAULT} onSubmitEditing={() => loginBtn()} secureTextEntry={true}/>
             <Text style={styles.forget} onPress={() => props.navigation.navigate(Style.Constants.KEY_FORGOT_PASSWORD)}>Forgot Password</Text>
             <View style={styles.btnBg}>
                 <Text style={styles.skip}>Skip</Text>

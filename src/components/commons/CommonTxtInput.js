@@ -7,7 +7,7 @@ import {
 import * as Style from '../../styles'
 
 const CommonTextInput = (props) => {
-    const { placeholder, txtStyle, multiLine,onChangeText, refValue,keyboardType, value,onSubmitEditing } = props
+    const { placeholder, txtStyle, multiLine,onChangeText, refValue,keyboardType, value,onSubmitEditing,secureTextEntry } = props
     return (
 
         <View style={[styles.container, txtStyle]}>
@@ -22,6 +22,7 @@ const CommonTextInput = (props) => {
             value={value}
             onSubmitEditing={onSubmitEditing}
             autoCapitalize={'none'}
+            secureTextEntry={secureTextEntry}
             />
         </View>
 

@@ -13,7 +13,7 @@ FORGOT_PASSWORD_FAILURE
 
 import callApis from '../services/apiCall';
 
-function* loginAction(action){
+export function* loginAction(action){
     console.log('action in saga :::: ',action)
       try {
         const data = yield callApis(action)
@@ -28,12 +28,12 @@ function* loginAction(action){
         yield put({type: API_CALL_FAILURE})
       }
   }
-  function* watchLoginAction(){
-      yield takeLatest(LOGIN_METHOD, loginAction )
-  }
+  // function* watchLoginAction(){
+  //     yield takeLatest(LOGIN_METHOD, loginAction )
+  // }
   
   //SIGN UP
-  function* signUpAction(action){
+ export function* signUpAction(action){
     console.log('action in saga signUpAction :::: ',action)
       try {
         const data = yield callApis(action)
@@ -44,11 +44,11 @@ function* loginAction(action){
         yield put({type: SIGN_UP_FAILURE})
       }
   }
-  function* watchSignUpction(){
-      yield takeLatest(SIGN_UP_METHOD, signUpAction )
-  }
+  // function* watchSignUpction(){
+  //     yield takeLatest(SIGN_UP_METHOD, signUpAction )
+  // }
   //FORGOT PASSWORD
-  function* forgotPasswordAction(action){
+ export function* forgotPasswordAction(action){
     console.log('action in saga signUpAction :::: ',action)
       try {
         const data = yield callApis(action)
@@ -59,17 +59,17 @@ function* loginAction(action){
         yield put({type: FORGOT_PASSWORD_FAILURE})
       }
   }
-  function* watchforgotPasswordAction(){
-      yield takeLatest(FORGOT_PASSWORD_METHOD, forgotPasswordAction )
-  }
+  // function* watchforgotPasswordAction(){
+  //     yield takeLatest(FORGOT_PASSWORD_METHOD, forgotPasswordAction )
+  // }
   
   //*************************** */
-  function* dataSaga(){
-      yield all([
-            watchLoginAction(),
-            watchSignUpction(),
-            watchforgotPasswordAction(),
-      ])
-  }
+  // function* dataSaga(){
+  //     yield all([
+  //           watchLoginAction(),
+  //           watchSignUpction(),
+  //           watchforgotPasswordAction(),
+  //     ])
+  // }
   
-  export default dataSaga;
+  // export default dataSaga;
