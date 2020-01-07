@@ -13,6 +13,7 @@ import CheckBox from 'react-native-check-box'
 import * as Style from '../../styles';
 import CustomLoader from '../commons/CustomLoader';
 import * as Validation from '../../res/validations';
+import toast from '../commons/CustomToast';
 
 
 
@@ -43,7 +44,7 @@ const SignUpForm = (props) => {
         // console.log("mobileRef value ::::::: ",mobileRef.props.value );
         // alert("res ::: ",loginRes)
         if (respose!= undefined && respose.status >= 100 && respose!= undefined && respose.status < 200){
-                  alert(respose.message);
+                  toast(respose.message);
              }else if (respose!= undefined && respose.status === 200 || respose!= undefined && respose.status===312){
                 props.navigation.navigate(Style.Constants.KEY_APP)
              }

@@ -15,6 +15,7 @@ import CustomButton from '../commons/CustomButton';
 import { loginAction } from '../../actions/action';
 import CustomLoader from '../commons/CustomLoader';
 import * as Validation from '../../res/validations';
+import toast from '../commons/CustomToast';
 
 
 const LoginForm = (props) => {
@@ -37,7 +38,7 @@ const LoginForm = (props) => {
         // console.log("mobileRef value ::::::: ",mobileRef.props.value );
         // alert("res ::: ",loginRes)
         if (loginRes != undefined && loginRes.status === 108 || loginRes != undefined && loginRes.status === 319) {
-            alert(loginRes.message);
+            toast(loginRes.message);
         } else if (loginRes != undefined && loginRes.status === 200 || loginRes != undefined && loginRes.status === 312) {
             props.navigation.state.params ? null : props.navigation.navigate(Style.Constants.KEY_APP)
         }
@@ -78,7 +79,7 @@ const LoginForm = (props) => {
             <CommonTextInput placeholder={"Password"} txtStyle={styles.password} onChangeText={(text) => setPasswordInput(text)} refValue={ref => passwordRef = ref} keyboardType={Style.Constants.KB_TYPE_DEFAULT} onSubmitEditing={() => loginBtn()} secureTextEntry={true}/>
             <Text style={styles.forget} onPress={() => props.navigation.navigate(Style.Constants.KEY_FORGOT_PASSWORD)}>Forgot Password</Text>
             <View style={styles.btnBg}>
-                <Text style={styles.skip}>Skip</Text>
+                <Text style={styles.skip} onPress={()=>props.navigation.navigate(Style.Constants.KEY_APP)}>Skip</Text>
                 <CustomButton
                     btnStyle={styles.signIn}
                     btnTitle="sign In"

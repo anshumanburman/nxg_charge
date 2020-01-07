@@ -20,6 +20,7 @@ import CustomLoader from '../commons/CustomLoader';
 import * as Validation from '../../res/validations';
 import CommonHeader from '../commons/CommonHeader';
 import CarLogo from '../commons/CarImage';
+import toast from '../commons/CustomToast';
 
 
 const ForgotPassword = ({navigation}) => {
@@ -47,7 +48,8 @@ const ForgotPassword = ({navigation}) => {
         //     navigation.state.params ? null : navigation.navigate(Style.Constants.KEY_APP)
         // }
         if (loginRes != undefined) {
-            alert(loginRes.message);
+            //alert(loginRes.message);
+            toast(loginRes.message)
         } 
         return ()=> {
             dispatch(forgotPasswordClear())
