@@ -50,15 +50,19 @@ const SignUpForm = (props) => {
              }
     },[respose]);
 const signUpBtn = ()=>{
+    if (!isChecked) {
+        toast("Please check the terms and condition & privacy policy.")
+        return
+    }
     if (Validation.isValidRegister(nameRef,emailRef,mobileRef,passwordRef,coonfirmPasswordRef) == false) { return }
     dispatch(signUpAction({
         "name": nameInput,
         "email": emailInput,
         "mobile_number": mobileInput,
         "password": passwordInput,
-        "country": "india",
-        "state": "rajasthan",
-        "city": "jaipur",
+        //"country": "india",
+        //"state": "rajasthan",
+        //"city": "jaipur",
         "device_id": "12345",
         "device_token": "dtoken",
         "device_type":"iosa"
@@ -77,13 +81,13 @@ const signUpBtn = ()=>{
                 <CommonTextInput placeholder={"Confirm password"} txtStyle={styles.email} onChangeText={(text) => setConfirmPasswordInput(text)} value={confirmPasswordInput} refValue={ref => coonfirmPasswordRef = ref} keyboardType={Style.Constants.KB_TYPE_DEFAULT} onSubmitEditing={() => coonfirmPasswordRef.blur()} secureTextEntry={true}/>
 
                 <CheckBox
-                    style={{ padding: 10, marginLeft: Style.Mixins.scaleSize(20) }}
+                    style={{ padding: 10, marginLeft: Style.Mixins.scaleSize(20),margin:10 }}
                     onClick={() => setIsCheked(!isChecked)
 
                     }
                     checkBoxColor={Style.Colors.GREEN_COLOR}
                     isChecked={isChecked}
-                    rightText={"CheckBox"}
+                    rightText={"I am agree with terms and condition & privacy policy"}
                 />
 
                 <CustomButton btnStyle={styles.signUp}

@@ -29,14 +29,12 @@ const Login = ({navigation}) => {
         }
     },[])
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-            <ScrollView contentContainerStyle={{flex:1}} keyboardShouldPersistTaps={'always'}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }} forceInset={{bottom:'never'}}>
+            <ScrollView contentContainerStyle={{flexGrow:1}} keyboardShouldPersistTaps={'always'}>
             <KeyboardAvoidingView style={{flex:1}} behavior="position">
-            
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Style.Spacing.SCALE_52 }}>
                     <TouchableOpacity style={styles.signIn} onPress={() => isSelectedSignIn(true)}>
                         <Text style={isSignIn ? styles.selected : styles.unselected}>Sign In</Text>
-
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.signUp} onPress={() => isSelectedSignIn(false)}>
                         <Text style={!isSignIn ? styles.selected : styles.unselected}>Sign Up</Text>
