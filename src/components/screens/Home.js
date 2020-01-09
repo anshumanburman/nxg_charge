@@ -1,14 +1,54 @@
-import React from 'react';
-import { View, ImageBackground, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, ImageBackground, Text, StyleSheet, TouchableOpacity, Image,Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import Geolocation from 'react-native-geolocation-service';
 import * as Style from '../../styles';
 import CommonTextInput from '../commons/CommonTxtInput';
 import CustomButton from '../commons/CustomButton';
+import hasLocationPermission from '../../services/LocationPermission';
+
+const {width, height} = Dimensions.get('window')
+const SCREEN_HEIGHT = height
+const SCREEN_WIDTH = width
+const ASPECT_RATIO = width / height
+const LATITUDE_DELTA = 0.0922
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
 
 
 const Home = ({ navigation }) => {
+const [region, setregion] = useState({
+  latitude: 0,
+  longitude: 0,
+  latitudeDelta: 0,
+  longitudeDelta: 0,
+})
+
+  useEffect(()=>{
+
+    if (hasLocationPermission) {
+      Geolocation.getCurrentPosition(
+          (position) => {
+              console.log(position);
+              let lat = parseFloat(position.coords.latitude)
+              let long = parseFloat(position.coords.longitude)
+              let currentLoc = {
+                latitude: lat,
+                longitude: long,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
+              }
+              setregion(currentLoc)
+          },
+          (error) => {
+              // See error code charts below.
+              console.log(error.code, error.message," error");
+          },
+          { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+      );
+  }
+  },[])
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }} forceInset={{ bottom: 'never' }}>
       {/* <ImageBackground style={{ flex: 1, backgroundColor: 'green',margin:0 }} source={require('../../../assets/images/home.png')}></ImageBackground> */}
@@ -22,12 +62,8 @@ const Home = ({ navigation }) => {
         <MapView
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
           style={styles.map}
-          region={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.015,
-            longitudeDelta: 0.0121,
-          }}
+          region={region}
+          showsUserLocation={true}
         >
         </MapView>
         

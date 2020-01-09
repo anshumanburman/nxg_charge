@@ -34,7 +34,7 @@ pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVecto
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
-
+  pod 'react-native-geolocation', path: '../node_modules/@react-native-community/geolocation'
   rn_maps_path = '../node_modules/react-native-maps'
   pod 'react-native-google-maps', :path => rn_maps_path
   pod 'GoogleMaps',  '3.2.0'
