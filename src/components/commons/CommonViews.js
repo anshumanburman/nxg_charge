@@ -18,7 +18,7 @@ export const ChargingStationView = (props) => {
                             <Text style={{ ...Utils.Typography.FONT_REGULAR, fontSize: 12, marginLeft: 10, marginRight: 10 }}>20Km</Text>
                         </View>
                     </View>
-                    <Text style={{ ...Utils.Typography.FONT_FAMILY_REGULAR, fontSize: 14, color: Utils.Colors.GREY_COLOR, marginTop: 10 }}>Pirojsha nagar, Vikhroli East, Mumbai</Text>
+                    <Text style={{ ...Utils.Typography.FONT_REGULAR, fontSize: 14, color: Utils.Colors.GREY_COLOR, marginTop: 10 }}>Pirojsha nagar, Vikhroli East, Mumbai</Text>
                     <View style={{ marginTop: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -75,7 +75,7 @@ export const ChargingStationDetailListView = (props) => {
                 <View style={{ padding: 15, flex: 1 }}>
                 <Text style={{ ...Utils.Typography.FONT_BOLD, fontSize: 18 }}>DC-Moderate</Text>
                     
-                    <Text style={{ ...Utils.Typography.FONT_FAMILY_REGULAR, fontSize: 16, color: Utils.Colors.GREY_COLOR, marginTop: 5 }}>15kW</Text>
+                    <Text style={{ ...Utils.Typography.FONT_REGULAR, fontSize: 16, color: Utils.Colors.GREY_COLOR, marginTop: 5 }}>15kW</Text>
                     <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
                     <Text style={{ ...Utils.Typography.FONT_REGULAR, fontSize: 16,color: Utils.Colors.GREY_COLOR, marginTop: 10 }}>Port type: CSS</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center',...Utils.Mixins.boxShadow('black') }}>
