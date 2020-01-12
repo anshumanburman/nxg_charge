@@ -22,7 +22,7 @@ import {Provider} from 'react-redux';
 
 
 
-enableScreens();
+//enableScreens();
 
 
 const store = configureStore();

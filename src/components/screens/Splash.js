@@ -21,9 +21,7 @@ const Splash = (props)=> {
     useEffect(() => {
         // Update the document title using the browser API
        // document.title = `You clicked ${count} times`;
-       setTimeout(() => {
-          // props.navigation.navigate(Style.Constants.KEY_AUTH);
-       }, 5000);
+       
        
 
 
@@ -50,12 +48,16 @@ const Splash = (props)=> {
             toValue: {x:width-200,y:height-480},
             duration: 2000
         }),
+        setTimeout(() => {
+            props.navigation.navigate(Style.Constants.KEY_AUTH);
+        }, 9000)
     ]).start()
+    
 
       });
     return (
         <View style={styles.container}><Text>Splash</Text>
-        <Animated.View style={{backgroundColor:'green',height:100,width:200, transform: _moveAnimationValue.getTranslateTransform()}} />
+        <Animated.View style={{backgroundColor:'green',height:100,width:200,transform: _moveAnimationValue.getTranslateTransform()}} />
         <Animated.View style={{backgroundColor:'red',height:_moveAnimationValue2,width:200,bottom:_moveAnimationValue2, transform: _moveAnimationValue1.getTranslateTransform()}} />
         <Animated.View style={{backgroundColor:'pink',height:150,width:150, transform: _moveAnimationValue3.getTranslateTransform()}} />
         <Animated.View style={{backgroundColor:'blue',height:100,width:200, transform: _moveAnimationValue4.getTranslateTransform()}} />
