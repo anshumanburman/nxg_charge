@@ -1,6 +1,6 @@
 import React, { useState, useEffect,useRef } from 'react';
 
-import { View, StyleSheet, TextInput, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { View, StyleSheet, TextInput, ScrollView, KeyboardAvoidingView,Text } from 'react-native';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { signUpAction } from '../../actions/action';
 
@@ -14,6 +14,7 @@ import * as Style from '../../styles';
 import CustomLoader from '../commons/CustomLoader';
 import * as Validation from '../../res/validations';
 import toast from '../commons/CustomToast';
+import CommonWebView from '../commons/CommonWebView';
 
 
 
@@ -25,6 +26,7 @@ const SignUpForm = (props) => {
     const [mobileInput, setMobileInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const [confirmPasswordInput, setConfirmPasswordInput] = useState('');
+    const [isPrivacy, setPrivacy] = useState(false);
     let nameRef = useRef(null);
     let emailRef = useRef(null);
     let mobileRef = useRef(null);
@@ -79,23 +81,30 @@ const signUpBtn = ()=>{
                 <CommonTextInput placeholder={"Mobile No."} txtStyle={styles.email} onChangeText={(text) => text.length <= 10 ? setMobileInput(text) : passwordRef.focus()} value={mobileInput} refValue={ref => mobileRef = ref} keyboardType={Style.Constants.KB_TYPE_PHONE} onSubmitEditing={() => passwordRef.focus()}/>
                 <CommonTextInput placeholder={"Password"} txtStyle={styles.email} onChangeText={(text) => setPasswordInput(text)} value={passwordInput} refValue={ref => passwordRef = ref} keyboardType={Style.Constants.KB_TYPE_DEFAULT} onSubmitEditing={() => coonfirmPasswordRef.focus()} secureTextEntry={true}/>
                 <CommonTextInput placeholder={"Confirm password"} txtStyle={styles.email} onChangeText={(text) => setConfirmPasswordInput(text)} value={confirmPasswordInput} refValue={ref => coonfirmPasswordRef = ref} keyboardType={Style.Constants.KB_TYPE_DEFAULT} onSubmitEditing={() => coonfirmPasswordRef.blur()} secureTextEntry={true}/>
-
+<View style={{flexDirection:'row',margin:10}}>
                 <CheckBox
-                    style={{ padding: 10, marginLeft: Style.Mixins.scaleSize(20),margin:10 }}
+                    style={{ marginLeft: Style.Mixins.scaleSize(20) }}
                     onClick={() => setIsCheked(!isChecked)
 
                     }
                     checkBoxColor={Style.Colors.GREEN_COLOR}
                     isChecked={isChecked}
-                    rightText={"I am agree with terms and condition & privacy policy"}
+                    rightText={""}
                 />
-
+                <View style={{flexDirection:'row',alignItems:'center',width:300,flexWrap:'wrap',marginLeft:10}}>
+                <Text style={{...Style.Typography.FONT_REGULAR,fontSize:14}}>I am agree with</Text>
+                <Text style={{...Style.Typography.FONT_REGULAR,fontSize:14,color:Style.Colors.GREEN_COLOR}} onPress={()=>setPrivacy(!isPrivacy)}> terms and condition</Text>
+                <Text style={{...Style.Typography.FONT_REGULAR,fontSize:14}}> &</Text>
+                <Text style={{...Style.Typography.FONT_REGULAR,fontSize:14,color:Style.Colors.GREEN_COLOR}} onPress={()=>setPrivacy(!isPrivacy)}> privacy policy</Text>
+                </View>
+</View>
                 <CustomButton btnStyle={styles.signUp}
                     btnTitle={"sign Up"} 
                     onPress={() => signUpBtn()}
                     />
 
 <CustomLoader loading={fetching} />
+{isPrivacy && <CommonWebView  title={"Privacy Policy"}isVisible={isPrivacy} dismiss={()=>setPrivacy(false)}/>}
         </>
 
     );

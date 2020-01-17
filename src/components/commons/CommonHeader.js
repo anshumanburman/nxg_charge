@@ -6,7 +6,7 @@ import * as Style from '../../styles';
 
 
 const CommonHeader = (props) => {
-    const { headerTitle,onPress,tintColor } = props;
+    const { headerTitle,onPress,tintColor, menuIcon } = props;
 
     return (
         <>
@@ -14,9 +14,11 @@ const CommonHeader = (props) => {
 
                 <TouchableOpacity onPress={onPress}>
 
-
-
-                    <Image style={{ resizeMode: 'center', height: 20, width: 20, marginLeft: 15,tintColor }} source={require('../../../assets/images/back.png')} />
+{menuIcon ? 
+    <Image style={{ width: 25, height: 25, resizeMode: 'contain',marginLeft: 15,tintColor  }} source={require('../../../assets/images/menu.png')} />
+:
+<Image style={{ resizeMode: 'center', height: 20, width: 20, marginLeft: 15,tintColor }} source={require('../../../assets/images/back.png')} />
+                }
 
                 </TouchableOpacity>
                 <Text style={{...styles.title,color:tintColor}}>{headerTitle}</Text>

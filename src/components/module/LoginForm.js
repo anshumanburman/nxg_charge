@@ -6,7 +6,8 @@ import {
     TouchableOpacity,
     Image,
     Platform,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Keyboard
 } from 'react-native';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import * as Style from '../../styles';
@@ -40,19 +41,23 @@ const LoginForm = (props) => {
         if (loginRes != undefined && loginRes.status === 108 || loginRes != undefined && loginRes.status === 319) {
             toast(loginRes.message);
         } else if (loginRes != undefined && loginRes.status === 200 || loginRes != undefined && loginRes.status === 312) {
-            props.navigation.state.params ? null : props.navigation.navigate(Style.Constants.KEY_APP)
+            Style.AsyncStorage.storeData(Style.Constants.KEY_USER_DETAILS,JSON.stringify(loginRes.data)).then(()=>{
+                props.navigation.state.params ? null : props.navigation.navigate(Style.Constants.KEY_APP)
+            })
+            
         }
     },[loginRes]);
     //useLayoutEffect
 
 
     const loginBtn = () => {
+        Keyboard.dismiss()
        delete props.navigation.state.params
         if (Validation.IsMobileNumber(mobileRef) == false) { return }
         dispatch(loginAction({
             "mobile_number": mobileInput,
             "password": passwordInput,
-            "user_type": "driver",
+            "user_type": "user",
             "device_id": "7E0049D5-5C02-4B97-989D-CFC0F8D26652",
             "device_token": "eo-7WkSfxm0:APA91bFQT3CXCyYlsax73DW_HLjuZ4UZVs_twUNhtHINPQUOZq6n2GxMynUD8CIFHwYQDHq1s4_DX7z99q_212ibBH8azXBQD0yRF0GZHFHNXZsHf49Up4EyKtblv8yHgLNuxLc0mL04",
             "device_type": Platform.OS === 'ios' ? "ios" : "android"

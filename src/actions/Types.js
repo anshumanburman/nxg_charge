@@ -13,3 +13,8 @@ export const SIGN_UP_FAILURE = "SIGN_UP_FAILURE";
 export const FORGOT_PASSWORD_METHOD = BASE_URL + 'forgotPassword';
 export const FORGOT_PASSWORD_SUCCESS = "FORGOT_PASSWORD_SUCCESS";
 export const FORGOT_PASSWORD_FAILURE = "FORGOT_PASSWORD_FAILURE";
+
+//Change Password
+export const CHANGE_PASSWORD_METHOD = BASE_URL + 'changePassword';
+export const CHANGE_PASSWORD_SUCCESS = "change_password_success";
+export const CHANGE_PASSWORD_FAILURE = "change_password_failure";

@@ -62,3 +62,25 @@ export function isValidRegister(nameRef, emailRef, mobileRef, passwordRef, coonf
     return true
 
 } 
+
+export function isValidChangePassword(currentPassRef ,passwordRef, coonfirmPasswordRef) {
+    if (currentPassRef.props.value === "") {
+        toast("Current password should not be blank.");
+        return false;
+    }else if(passwordRef.props.value === "") {
+        toast("New password should not be blank.");
+        return false;
+    }else if(coonfirmPasswordRef.props.value === "") {
+        toast("Confirm password should not be blank.");
+        return false;
+    }else if(coonfirmPasswordRef.props.value != passwordRef.props.value) {
+        toast("New passwod and Confirm password must be same.");
+        return false;
+    }else if(currentPassRef.props.value == passwordRef.props.value) {
+        toast("Current password and new password must not be same.");
+        return false;
+    }
+    
+    return true
+
+}

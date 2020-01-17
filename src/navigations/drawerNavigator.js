@@ -7,6 +7,9 @@ import CustomDrawer from '../components/screens/CustomDrawer';
 import ChargingStation from '../components/screens/ChargingStation';
 import Offers from '../components/screens/Offers';
 import ChargingStationDetails from '../components/screens/ChargingStationDetails';
+import ChangePassword from '../components/screens/ChangePassword';
+import Help from '../components/screens/Help';
+import Settings from '../components/screens/Settings';
 
 
 
@@ -25,6 +28,9 @@ const DrawerNavigator = createDrawerNavigator({
     [Style.Constants.KEY_CHARGING_STATIONS]: ChargingStation,
     //station : StationNavigator,
     [Style.Constants.KEY_OFFERS] : Offers,
+    [Style.Constants.KEY_CHANGE_PASSWORD] : ChangePassword,
+    [Style.Constants.KEY_HELP] : Help,
+    [Style.Constants.KEY_SETTINGS] : Settings,
 }, {
     initialRouteName: Style.Constants.KEY_HOME,
     contentComponent: CustomDrawer,

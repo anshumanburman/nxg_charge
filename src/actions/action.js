@@ -3,7 +3,8 @@ import {
     LOGIN_METHOD,
     SIGN_UP_METHOD,
     FORGOT_PASSWORD_METHOD,
-    FORGOT_PASSWORD_FAILURE
+    FORGOT_PASSWORD_FAILURE,
+    CHANGE_PASSWORD_METHOD
 } from './Types';
 import { KEY_FORGOT_PASSWORD } from '../res/constants';
 
@@ -28,5 +29,12 @@ export function forgotPasswordAction(data){
 export function forgotPasswordClear(){
     return {
         type:FORGOT_PASSWORD_FAILURE
+    }
+}
+
+export function changePasswordAction(data) {
+    return {
+        type:CHANGE_PASSWORD_METHOD,
+        payload:data
     }
 }

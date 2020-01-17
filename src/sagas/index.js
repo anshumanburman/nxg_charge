@@ -1,8 +1,8 @@
 import {all,takeLatest} from 'redux-saga/effects';
 
 
-import {loginAction,signUpAction,forgotPasswordAction} from './saga';
-import {LOGIN_METHOD,SIGN_UP_METHOD,FORGOT_PASSWORD_METHOD} from '../actions/Types';
+import {loginAction,signUpAction,forgotPasswordAction,changePasswordAction} from './saga';
+import {LOGIN_METHOD,SIGN_UP_METHOD,FORGOT_PASSWORD_METHOD, CHANGE_PASSWORD_METHOD} from '../actions/Types';
 
 
 function* watchLoginAction(){
@@ -16,6 +16,9 @@ function* watchSignUpction(){
 function* watchforgotPasswordAction(){
     yield takeLatest(FORGOT_PASSWORD_METHOD, forgotPasswordAction )
 }
+function* watchChangePasswordAction(){
+    yield takeLatest(CHANGE_PASSWORD_METHOD, changePasswordAction )
+}
 
 
 function* rootSaga(){
@@ -23,6 +26,7 @@ function* rootSaga(){
           watchLoginAction(),
           watchSignUpction(),
           watchforgotPasswordAction(),
+          watchChangePasswordAction()
     ])
 }
 

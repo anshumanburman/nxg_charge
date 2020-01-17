@@ -19,18 +19,10 @@ export function* loginAction(action){
         const data = yield callApis(action)
         console.log('data fetch login ::::: ',data)
         yield put({type: API_CALL_SUCCESS,payload: data})
-  //       if (data.status == 200 || data.status==312 )
-  //   yield put({ type: API_CALL_SUCCESS, payload: data })
-  // else
-  //   yield put({ type: API_CALL_FAILURE, error: data })
-
       }catch(e){
         yield put({type: API_CALL_FAILURE})
       }
   }
-  // function* watchLoginAction(){
-  //     yield takeLatest(LOGIN_METHOD, loginAction )
-  // }
   
   //SIGN UP
  export function* signUpAction(action){
@@ -44,9 +36,7 @@ export function* loginAction(action){
         yield put({type: SIGN_UP_FAILURE})
       }
   }
-  // function* watchSignUpction(){
-  //     yield takeLatest(SIGN_UP_METHOD, signUpAction )
-  // }
+  
   //FORGOT PASSWORD
  export function* forgotPasswordAction(action){
     console.log('action in saga signUpAction :::: ',action)
@@ -59,17 +49,16 @@ export function* loginAction(action){
         yield put({type: FORGOT_PASSWORD_FAILURE})
       }
   }
-  // function* watchforgotPasswordAction(){
-  //     yield takeLatest(FORGOT_PASSWORD_METHOD, forgotPasswordAction )
-  // }
+  //CHANGE PASSWORD
+ export function* changePasswordAction(action){
+    console.log('action in saga signUpAction :::: ',action)
+      try {
+        const data = yield callApis(action)
+        console.log('data fetch login ::::: ',data)
+        yield put({type: CHANGE_PASSWORD_SUCCESS,payload: data})
   
-  //*************************** */
-  // function* dataSaga(){
-  //     yield all([
-  //           watchLoginAction(),
-  //           watchSignUpction(),
-  //           watchforgotPasswordAction(),
-  //     ])
-  // }
+      }catch(e){
+        yield put({type: CHANGE_PASSWORD_FAILURE})
+      }
+  }
   
-  // export default dataSaga;

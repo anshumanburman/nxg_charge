@@ -36,28 +36,43 @@ const Splash = (props)=> {
             duration: 1000
         }),
         Animated.timing(_moveAnimationValue2, {
-            toValue: 100,
+            toValue: 130,
             duration: 2000,
             easing: Easing.bounce,
             //useNativeDriver:true
         }),
         Animated.timing(_moveAnimationValue3, {
-            toValue: {x:30,y:height-295},
+            toValue: {x:30,y:height-320},
             duration: 3000
         }),
         Animated.timing(_moveAnimationValue4, {
             toValue: {x:width-90,y:height-405},
             duration: 1000
-        }),
-        setTimeout(() => {
-            props.navigation.navigate(Style.Constants.KEY_AUTH);
-        }, 9000)
+        })
     ]).start()
     
 
     setTimeout(() => {
-         props.navigation.navigate(Style.Constants.KEY_AUTH);
+         
+         
+         Style.AsyncStorage.getData(Style.Constants.KEY_USER_DETAILS).then((item)=>{
+            let jsonData = JSON.parse(item)
+            global.userID = jsonData.id
+            console.log("global.userID :::::: ",global.userID);
+            if (jsonData.id) {
+                props.navigation.navigate(Style.Constants.KEY_DRAWER);
+            }else{
+                props.navigation.navigate(Style.Constants.KEY_AUTH);
+            }
+          })
+
+
+
+
      }, 9000);
+
+     
+
 
       });
     return (

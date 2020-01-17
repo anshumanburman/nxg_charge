@@ -8,8 +8,10 @@ const itemList = [
     {label : "Charge Now", route: Utils.Constants.KEY_OFFERS},
     {label : "Login", route: Utils.Constants.KEY_LOGIN},
     {label : "Sign up", route: Utils.Constants.KEY_LOGIN},
-    {label : "Contact Us"},
-    {label : "Privacy policy"}
+    {label : "Change Password", route: Utils.Constants.KEY_CHANGE_PASSWORD},
+    {label : "Help", route: Utils.Constants.KEY_HELP},
+    {label : "Contact Us",route: Utils.Constants.KEY_SETTINGS},
+    {label : "Privacy policy",route: Utils.Constants.KEY_SETTINGS}
 ]
 
 const CustomDrawer = ({navigation}) => {
@@ -41,6 +43,21 @@ let navigateAction;
                     action: NavigationActions.navigate({ routeName: route }),
                   });
                // navigation.dispatch(navigateAction)
+                break;
+                case 6:
+                 navigateAction = NavigationActions.navigate({
+                    routeName: route,
+                    params: {title:"Contact Us"},
+                    action: NavigationActions.navigate({ routeName: route }),
+                  });
+                  break;
+                case 7:
+                 navigateAction = NavigationActions.navigate({
+                    routeName: route,
+                    params: {title:"Privacy Policy"},
+                    action: NavigationActions.navigate({ routeName: route }),
+                  });
+               
                 break;
         default:
              navigateAction = NavigationActions.navigate({

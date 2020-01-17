@@ -48,6 +48,10 @@ const [region, setregion] = useState({
           { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
       );
   }
+  // Style.AsyncStorage.getData("userDetails").then((item)=>{
+  //   console.log("Home :::::: ",item);
+    
+  // })
   },[])
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }} forceInset={{ bottom: 'never' }}>

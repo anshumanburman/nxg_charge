@@ -2,6 +2,7 @@ import React from 'react';
 
 import * as Style from '../../styles';
 import { View, StyleSheet, TextInput, ScrollView, Text } from 'react-native';
+import {SafeAreaView} from 'react-navigation';
 
 import CommonTextInput from '../commons/CommonTxtInput';
 
@@ -14,11 +15,12 @@ import CommonHeader from '../commons/CommonHeader';
 
 
 
-const Help = (props) => {
+const Help = ({navigation}) => {
     return (
 
         <>
-            <CommonHeader navigation={props.navigation} />
+        <SafeAreaView style={{ flex: 1 }}>
+        <CommonHeader headerTitle={'Help'} onPress={() => navigation.goBack()} />
 
 
             <CommonDropDown labelName={'Ticket Type'} style={{ marginTop: 50 }} />
@@ -29,7 +31,7 @@ const Help = (props) => {
 
 
 
-
+            </SafeAreaView>
 
 
 
