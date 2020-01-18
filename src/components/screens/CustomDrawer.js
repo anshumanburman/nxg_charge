@@ -11,7 +11,8 @@ const itemList = [
     {label : "Change Password", route: Utils.Constants.KEY_CHANGE_PASSWORD},
     {label : "Help", route: Utils.Constants.KEY_HELP},
     {label : "Contact Us",route: Utils.Constants.KEY_SETTINGS},
-    {label : "Privacy policy",route: Utils.Constants.KEY_SETTINGS}
+    {label : "Privacy policy",route: Utils.Constants.KEY_SETTINGS},
+    {label : "Logout"},
 ]
 
 const CustomDrawer = ({navigation}) => {
@@ -26,7 +27,7 @@ const navigatetoScreen = (route,index) => {
     //     action: NavigationActions.navigate({ routeName: route }),
     //   });
     // navigation.dispatch(navigateAction)
-let navigateAction;
+let navigateAction=undefined;
     switch (index) {
         case 2:
              navigateAction = NavigationActions.navigate({
@@ -57,6 +58,15 @@ let navigateAction;
                     params: {title:"Privacy Policy"},
                     action: NavigationActions.navigate({ routeName: route }),
                   });
+               
+                break;
+                case 8:
+                 navigateAction = NavigationActions.navigate({
+                    routeName: route,
+                    params: {title:"Privacy Policy"},
+                    action: NavigationActions.navigate({ routeName: route }),
+                  });
+                  alert("You want to log out")
                
                 break;
         default:

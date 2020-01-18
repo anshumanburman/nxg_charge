@@ -29,7 +29,7 @@ const Splash = (props)=> {
        Animated.sequence([
         Animated.timing(_moveAnimationValue, {
             toValue:0,
-            duration: 1000
+            duration: 800
         }),
         Animated.timing(_moveAnimationValue1, {
             toValue: {x:width/2-100,y:height/2-100},
@@ -37,39 +37,34 @@ const Splash = (props)=> {
         }),
         Animated.timing(_moveAnimationValue2, {
             toValue: 130,
-            duration: 2000,
+            duration: 1500,
             easing: Easing.bounce,
             //useNativeDriver:true
         }),
         Animated.timing(_moveAnimationValue3, {
             toValue: {x:30,y:height-320},
-            duration: 3000
+            duration: 1000
         }),
         Animated.timing(_moveAnimationValue4, {
             toValue: {x:width-90,y:height-405},
-            duration: 1000
+            duration: 800
         })
     ]).start()
     
 
     setTimeout(() => {
          
-         
          Style.AsyncStorage.getData(Style.Constants.KEY_USER_DETAILS).then((item)=>{
-            let jsonData = JSON.parse(item)
-            global.userID = jsonData.id
-            console.log("global.userID :::::: ",global.userID);
-            if (jsonData.id) {
-                props.navigation.navigate(Style.Constants.KEY_DRAWER);
+            console.warn("global.item :::::: ",item);
+            if (item) {
+                let jsonData = JSON.parse(item);
+                global.userID = jsonData.id;
+                jsonData.id?props.navigation.navigate(Style.Constants.KEY_APP):props.navigation.navigate(Style.Constants.KEY_AUTH);
             }else{
-                props.navigation.navigate(Style.Constants.KEY_AUTH);
+                props.navigation.navigate(Style.Constants.KEY_AUTH)
             }
           })
-
-
-
-
-     }, 9000);
+     }, 6000);
 
      
 
@@ -77,10 +72,10 @@ const Splash = (props)=> {
       });
     return (
         <View style={styles.container}>
-        <Animated.View style={{backgroundColor:'green',height:137,width:120,...styles.j , transform: _moveAnimationValue.getTranslateTransform()}} />
+        <Animated.View style={{backgroundColor:'green',opacity:0.30,height:137,width:120,...styles.j , transform: _moveAnimationValue.getTranslateTransform()}} />
         <Animated.Image source={require('../../../assets/images/logo.png')} style={{resizeMode:'center',height:_moveAnimationValue2,width:200,bottom:_moveAnimationValue2, transform: _moveAnimationValue1.getTranslateTransform()}} />
         <Animated.Image source={require('../../../assets/images/vecter.png')} style={{resizeMode:'center',height:76,width:210, transform: _moveAnimationValue3.getTranslateTransform()}} />
-        <Animated.View style={{backgroundColor:'green',height:115,width:93, ...styles.K  ,transform: _moveAnimationValue4.getTranslateTransform()}} />
+        <Animated.View style={{backgroundColor:'green',opacity:0.30,height:115,width:93, ...styles.K  ,transform: _moveAnimationValue4.getTranslateTransform()}} />
         </View>
     )
 }
