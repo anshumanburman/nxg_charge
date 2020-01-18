@@ -9,15 +9,18 @@ import {
     Image
 } from 'react-native';
 import * as Style from '../../styles';
+import {SafeAreaView} from 'react-navigation';
 const {width,height}=Dimensions.get('window')
 
 const Splash = (props)=> {
     let  _opacityAnimationValue = new Animated.Value(1);
     let _moveAnimationValue = new Animated.ValueXY({x:-90,y:-90});
-    let _moveAnimationValue1 = new Animated.ValueXY({x:width/2-100,y:height/2-50});
+    //let _moveAnimationValue1 = new Animated.ValueXY({x:width/2-100,y:height/2-50});
+    let _moveAnimationValue1 = new Animated.ValueXY(0);
     let _moveAnimationValue2 = new Animated.Value(0);
-    let _moveAnimationValue3 = new Animated.ValueXY({x:-2500,y:height-380});
-    let _moveAnimationValue4 = new Animated.ValueXY({x:width,y:height});
+    //let _moveAnimationValue3 = new Animated.ValueXY({x:-2500,y:height-380});
+    let _moveAnimationValue3 = new Animated.ValueXY({x:-250,y:0});
+    let _moveAnimationValue4 = new Animated.ValueXY({x:width,y:120});
     let SlideInLeft= new Animated.Value(0)
     useEffect(() => {
         // Update the document title using the browser API
@@ -32,7 +35,7 @@ const Splash = (props)=> {
             duration: 800
         }),
         Animated.timing(_moveAnimationValue1, {
-            toValue: {x:width/2-100,y:height/2-100},
+            toValue: 1,//{x:width/2-100,y:height/2-100},
             duration: 1000
         }),
         Animated.timing(_moveAnimationValue2, {
@@ -42,11 +45,11 @@ const Splash = (props)=> {
             //useNativeDriver:true
         }),
         Animated.timing(_moveAnimationValue3, {
-            toValue: {x:30,y:height-320},
+            toValue: {x:20,y:0},
             duration: 1000
         }),
         Animated.timing(_moveAnimationValue4, {
-            toValue: {x:width-90,y:height-405},
+            toValue: {x:60,y:0},
             duration: 800
         })
     ]).start()
@@ -55,7 +58,7 @@ const Splash = (props)=> {
     setTimeout(() => {
          
          Style.AsyncStorage.getData(Style.Constants.KEY_USER_DETAILS).then((item)=>{
-            console.warn("global.item :::::: ",item);
+            //console.warn("global.item :::::: ",item);
             if (item) {
                 let jsonData = JSON.parse(item);
                 global.userID = jsonData.id;
@@ -72,10 +75,16 @@ const Splash = (props)=> {
       });
     return (
         <View style={styles.container}>
+            <View>
         <Animated.View style={{backgroundColor:'green',opacity:0.30,height:137,width:120,...styles.j , transform: _moveAnimationValue.getTranslateTransform()}} />
-        <Animated.Image source={require('../../../assets/images/logo.png')} style={{resizeMode:'center',height:_moveAnimationValue2,width:200,bottom:_moveAnimationValue2, transform: _moveAnimationValue1.getTranslateTransform()}} />
+        </View>
+        
+        <Animated.Image source={require('../../../assets/images/logo.png')} style={{resizeMode:'center',alignSelf:'center',height:_moveAnimationValue2,width:200,bottom:_moveAnimationValue2,marginTop:130, transform: _moveAnimationValue1.getTranslateTransform()}} />
+        
+       <View style={{flexDirection:'row',alignItems:'flex-end'}}>
         <Animated.Image source={require('../../../assets/images/vecter.png')} style={{resizeMode:'center',height:76,width:210, transform: _moveAnimationValue3.getTranslateTransform()}} />
-        <Animated.View style={{backgroundColor:'green',opacity:0.30,height:115,width:93, ...styles.K  ,transform: _moveAnimationValue4.getTranslateTransform()}} />
+        <Animated.View style={{backgroundColor:'green',opacity:0.30,height:115,width:93,...styles.K  ,transform: _moveAnimationValue4.getTranslateTransform()}} />
+        </View>
         </View>
     )
 }
@@ -83,7 +92,8 @@ const Splash = (props)=> {
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        backgroundColor:'white'
+        backgroundColor:'white',
+        justifyContent:'space-between'
     },
     j : {
        
